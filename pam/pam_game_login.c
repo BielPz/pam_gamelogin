@@ -19,7 +19,7 @@
  */
 
 #include <security/pam_modules.h>
-#include <conio.h>
+#include <time.h>
 #include <stdlib.h>
 #include "FlappyPlayLinux.h"
 #include "campo_minado.h"
