@@ -21,8 +21,8 @@
 #include <security/pam_modules.h>
 #include <time.h>
 #include <stdlib.h>
-#include "FlappyPlayLinux.h"
-#include "campo_minado.h"
+#include <FlappyPlayLinux.h>
+#include <campo_minado_linux.h>
 
 
 /*
@@ -43,7 +43,7 @@ int pam_sm_setcred( pam_handle_t *pamh, int flags, int argc, const char **argv )
         ganhouGame = PlayFlappy();
         break;
     case 1:
-        ganhouGame = PlayCampo_Minado();
+        ganhouGame = PlayCampoMinado();
         break;
     case 2:
         ganhouGame = PlayFlappy();
