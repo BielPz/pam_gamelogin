@@ -10,8 +10,8 @@ FlappyBird.o: FlappyBird.c
 	gcc -c -fPIC FlappyBird.c
 
 install: pam_game_login.o
-	ld -x --shared -o /lib64/security/pam_game_login.so pam_game_login.o
 	ld -x --shared -o /lib64/lib_jogos.so campo_minado_linux.o FlappyBird.o
+	gcc -shared -o /lib64/security/pam_game_login.so pam_game_login.o -L/lib64 -l:jogos
 
 uninstall:
 	rm -f /lib64/security/pam_game_login.so
