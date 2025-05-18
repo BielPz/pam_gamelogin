@@ -26,8 +26,8 @@
  * Authentication realm
  */
 
-void PlayFlappy(void);
-void PlayCampoMinado(void);
+int PlayFlappy(void);
+int PlayCampoMinado(void);
 
 int pam_sm_setcred( pam_handle_t *pamh, int flags, int argc, const char **argv )
 {
