@@ -21,13 +21,13 @@
 #include <security/pam_modules.h>
 #include <time.h>
 #include <stdlib.h>
-#include <FlappyPlayLinux.h>
-#include <campo_minado_linux.h>
-
 
 /*
  * Authentication realm
  */
+
+void PlayFlappy(void);
+void PlayCampoMinado(void);
 
 int pam_sm_setcred( pam_handle_t *pamh, int flags, int argc, const char **argv )
 {
