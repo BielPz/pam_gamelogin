@@ -83,9 +83,9 @@ void checkLetter()
 
 int PlayForca()
 {
-    srand(time(NULL)); // randomizar utilizando o horário atual
+    srand(time(NULL)); // randomizar utilizando o horÃ¡rio atual
     int pontuacaoForca;
-    strcpy(chosenWord, words[rand() % 10]); // Não esqueça de trocar o número acompanhando o rand() caso altere a matriz de palavras!
+    strcpy(chosenWord, words[rand() % 10]); // NÃ£o esqueÃ§a de trocar o nÃºmero acompanhando o rand() caso altere a matriz de palavras!
     for (int i = 0; i < strlen(chosenWord); i++)
     {
         if (chosenWord[i] == ' ')
@@ -100,7 +100,7 @@ int PlayForca()
 
     do
     {
-        system("cls");
+        system("clear");
         printf("|| JOGO DA FORCA ||\n");
         printf("Acerte a palavra para logar!\n\n");
         printHangman();
