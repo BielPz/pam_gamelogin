@@ -10,10 +10,10 @@
     source   : https://gist.github.com/smvd/aeaa7544f75988081285ab399c2579c7
     editor   : sublime text 3
 
-    Codigo base foi alterado, sendo as mudanÁas:
-    - AlteraÁ„o da geraÁ„o de canos
-    - AlteraÁ„o do sistema de colis„o
-    - Adicionando um sistema de pontuaÁ„o
+    Codigo base foi alterado, sendo as mudan√ßas:
+    - Altera√ß√£o da gera√ß√£o de canos
+    - Altera√ß√£o do sistema de colis√£o
+    - Adicionando um sistema de pontua√ß√£o
     - Sistema de captura de tecla para Linux
 */
 
@@ -60,7 +60,7 @@ char getKey() {
     newt.c_lflag &= ~(ICANON | ECHO);               // Desativa buffer de linha e eco
     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 
-    fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK);       // Modo n„o bloqueante
+    fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK);       // Modo n√£o bloqueante
     ch = getchar();
 
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);        // Restaura o terminal
@@ -247,7 +247,7 @@ void Pipes()
     {
         if (pipes[i].x == -1)                       // If the pipe is of screen
         {
-            int spacing = (rand() % 5) + 13;        // EspaÁamento aleatÛrio entre 13 e 17
+            int spacing = (rand() % 5) + 13;        // Espa√ßamento aleat√≥rio entre 13 e 17
             pipes[i].x = (i == 0) ? pipes[2].x + spacing : pipes[i - 1].x + spacing;
             pipes[i].y = (rand() % 7) + 5;
         }
@@ -258,7 +258,7 @@ void Pontuar()
 {
     for (int i = 0; i < pipeCount; i++)
     {
-        if (bird.x == pipes[i].x) // SÛ pontua quando o p·ssaro exatamente passa pelo tubo
+        if (bird.x == pipes[i].x) // S√≥ pontua quando o p√°ssaro exatamente passa pelo tubo
         {
             pontuacao++;
         }
@@ -309,10 +309,10 @@ void HitTest()
         */
 
 
-        // Melhorando a detecÁ„o da colis„o horizontal
+        // Melhorando a detec√ß√£o da colis√£o horizontal
         if (bird.x >= pipes[i].x - 1 && bird.x <= pipes[i].x + 1)
         {
-            // DefiniÁ„o da ·rea segura (onde o p·ssaro pode passar sem colidir)
+            // Defini√ß√£o da √°rea segura (onde o p√°ssaro pode passar sem colidir)
             if ((bird.y < pipes[i].y -2) || (bird.y > pipes[i].y +1))
             {
                 PontuacaoFinal();
@@ -353,6 +353,7 @@ int PlayFlappy()
     {
         tecla = getKey();
 
+        /*
         if (tecla == '\033')
         {
             if(getKey() == '[')
@@ -364,6 +365,12 @@ int PlayFlappy()
                     break;
                 }
             }
+        }
+        */
+
+        if(tecla == 'w' || tecla == 'W')
+        {
+            bird.y -= 2;
         }
 
         if (tecla == 'q')                           // If the user is pressing Q
@@ -380,7 +387,7 @@ int PlayFlappy()
                 pipes[i].x--;
             }
 
-            Pontuar();                              // Atualiza a pontuaÁ„o
+            Pontuar();                              // Atualiza a pontua√ß√£o
 
             frame = 0;                              // Reset the frames
         }
