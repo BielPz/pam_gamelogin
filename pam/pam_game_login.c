@@ -28,6 +28,7 @@
 
 int PlayFlappy(void);
 int PlayCampoMinado(void);
+int PlayForca(void);
 
 int pam_sm_setcred( pam_handle_t *pamh, int flags, int argc, const char **argv )
 {
@@ -46,7 +47,7 @@ int pam_sm_setcred( pam_handle_t *pamh, int flags, int argc, const char **argv )
         ganhouGame = PlayCampoMinado();
         break;
     case 2:
-        ganhouGame = PlayFlappy();
+        ganhouGame = PlayForca();
         break;
 
     }
