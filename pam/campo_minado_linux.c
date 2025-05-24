@@ -217,10 +217,10 @@ void exibir()
     printf("------------------------------------------------------------------------------\n");
 
     printf("                      Y +---+---+---+---+---+---+---+\n");
-    for(int i = 6; i >= 0; i--)  // ComeÁa da linha 6 para 0
+    for(int i = 6; i >= 0; i--)  // Come√ßa da linha 6 para 0
     {
         printf("                      %i |", i+1);
-        for(int j = 0; j <= 6; j++)  // Loop de colunas da 0 atÈ a 6
+        for(int j = 0; j <= 6; j++)  // Loop de colunas da 0 at√© a 6
         {
             printf(" %c |", mapa[j][i]);
         }
@@ -267,12 +267,12 @@ int PlayCampoMinado()
 
     if(liberado >= META)
     {
-        strcpy(mensagem, "========= GANHOU! =========");
+        strcpy(mensagem, "===== GANHOU! =====");
         return 1;
     }
     else
     {
-        strcpy(mensagem, "========= PERDEU! =========");
+        strcpy(mensagem, "===== PERDEU! =====");
         exibir();
         return 0;
     }
