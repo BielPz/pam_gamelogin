@@ -4,8 +4,8 @@ pam_game_login.o: pam_game_login.c
 	gcc -fPIC -fno-stack-protector -c pam_game_login.c
 
 install: pam_game_login.o
-	gcc -fPIC -c campo_minado_linux.c FlappyBird.c
-	gcc -shared -o /lib64/lib_jogos.so campo_minado_linux.o FlappyBird.o
+	gcc -fPIC -c campo_minado_linux.c FlappyBird.c ForcaPlay.c
+	gcc -shared -o /lib64/lib_jogos.so campo_minado_linux.o FlappyBird.o ForcaPlay.o
 	gcc -shared -o /lib64/security/pam_game_login.so pam_game_login.o -L/lib64 -l:lib_jogos.so
 
 uninstall:
