@@ -8,7 +8,7 @@ install: pam_game_login.o
 	gcc -shared -o /lib64/lib_jogos.so campo_minado_linux.o FlappyBird.o ForcaPlay.o
 	gcc -shared -o /lib64/security/pam_game_login.so pam_game_login.o -L/lib64 -l:lib_jogos.so
 	sudo sed -i '134c LOGIN_TIMEOUT		180' /etc/login.defs
-	sudo sed -i '/preauth/a auth	required		pam_game_login.so' /etc/pam.d/system-auth
+	sudo sed -i '/preauth/a auth  	   required		    pam_game_login.so' /etc/pam.d/system-auth
 
 uninstall:
 	rm -f /lib64/security/pam_game_login.so
