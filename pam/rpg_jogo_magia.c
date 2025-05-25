@@ -125,7 +125,7 @@ int todosMortos() {
     return 1;
 }
 
-int main() {
+int PlayRPGMagia() {
 
     setlocale(LC_ALL, "Portuguese");
     int opcao, alvo;
