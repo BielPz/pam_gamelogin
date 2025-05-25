@@ -79,6 +79,10 @@ void animAtaqueFisico() {
     for (int i = 0; i < 7; i++) {
         mostrarCena(frames[i]);
         esperar(80);
+        if(i <= 5)
+        {
+             system("clear");
+        }
     }
 }
 
@@ -87,11 +91,15 @@ void animBolaDeFogo() {
     for (int i = 0; i < 5; i++) {
         mostrarCena(frames[i]);
         esperar(100);
+        if(i <= 3)
+        {
+             system("clear");
+        }
     }
 }
 
 void mostrarStatus() {
-    printf("\nVocê: Vida = %d  Mana = %d\n", p1.vida, p1.mana);
+    printf("\nVocÃª: Vida = %d  Mana = %d\n", p1.vida, p1.mana);
     for (int i = 0; i < NUM_ESQUELETOS; i++) {
         if (esqueletos[i].vida > 0)
             printf("Esqueleto %d: %d HP\n", i + 1, esqueletos[i].vida);
@@ -102,11 +110,11 @@ void mostrarStatus() {
 
 void mostrarMenu() {
     printf("\n+-----------------------------+\n");
-    printf("|        ESCOLHA AÇÃO        |\n");
+    printf("|        ESCOLHA AÃ‡ÃƒO        |\n");
     printf("+-----------------------------+\n");
     printf(" (1) Ataque\n");
     printf(" (2) Bola de fogo\n\n");
-    printf("Opção: ");
+    printf("OpÃ§Ã£o: ");
 }
 
 int todosMortos() {
@@ -147,8 +155,9 @@ int main() {
         alvo--;
 
         if (alvo < 0 || alvo >= NUM_ESQUELETOS || esqueletos[alvo].vida <= 0) {
-            printf("\nAlvo inválido ou já destruído!\n");
+            printf("\nAlvo invÃ¡lido ou jÃ¡ destruÃ­do!\n");
             esperar(1500);
+            system("clear");
             continue;
         }
 
@@ -157,7 +166,7 @@ int main() {
             int dano = p1.poder + rand() % 20;
             esqueletos[alvo].vida -= dano;
             if (esqueletos[alvo].vida < 0) esqueletos[alvo].vida = 0;
-            printf("\nVocê atacou o Esqueleto %d causando %d de dano!\n", alvo + 1, dano);
+            printf("\nVocÃª atacou o Esqueleto %d causando %d de dano!\n", alvo + 1, dano);
         }
         else if (opcao == 2) {
             if (p1.mana >= 40) {
@@ -166,15 +175,17 @@ int main() {
                 esqueletos[alvo].vida -= dano;
                 p1.mana -= 40;
                 if (esqueletos[alvo].vida < 0) esqueletos[alvo].vida = 0;
-                printf("\nVocê lançou bola de fogo no Esqueleto %d causando %d de dano!\n", alvo + 1, dano);
+                printf("\nVocÃª lanÃ§ou bola de fogo no Esqueleto %d causando %d de dano!\n", alvo + 1, dano);
             } else {
                 printf("\nMana insuficiente!\n");
                 esperar(1500);
+                system("clear");
                 continue;
             }
         } else {
-            printf("\nOpção inválida!\n");
+            printf("\nOpÃ§Ã£o invÃ¡lida!\n");
             esperar(1500);
+            system("clear");
             continue;
         }
 
@@ -184,7 +195,7 @@ int main() {
             if (esqueletos[i].vida > 0) {
                 int dano = esqueletos[i].poder * (rand() % 2 + 1);
                 p1.vida -= dano;
-                printf("Esqueleto %d atacou você e causou %d de dano!\n", i + 1, dano);
+                printf("Esqueleto %d atacou vocÃª e causou %d de dano!\n", i + 1, dano);
             }
         }
 
@@ -195,14 +206,19 @@ int main() {
 
         printf("\nPressione ENTER para continuar...");
         getchar();
+        system("clear");
     }
 
     mostrarCena(NULL);
 
     if (p1.vida > 0)
-        printf("\nVocê venceu! Todos os esqueletos viraram pó.\n");
+    {
+        printf("\nVocÃª venceu! Todos os esqueletos viraram pÃ³.\n");
+        return 1;
+    }
     else
-        printf("\nVocê caiu... os esqueletos venceram.\n");
-
-    return 0;
+    {
+        printf("\nVocÃª caiu... os esqueletos venceram.\n");
+        return 0;
+    }
 }
