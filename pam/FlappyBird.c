@@ -322,10 +322,30 @@ void HitTest()
     }
 }
 
+void Menu()
+{
+    printf("\n---------------------------------------------------\n");
+    printf("\n _______  __           ___      .______   .______   ____    ____    .______    __  .______       _______\n");
+    printf("|   ____||  |         /   \\     |   _  \\  |   _  \\  \\   \\  /   /    |   _  \\  |  | |   _  \     |       \\ \n");
+    printf("|  |__   |  |        /  ^  \\    |  |_)  | |  |_)  |  \\   \\/   /     |  |_)  | |  | |  |_)  |    |  .--.  | \n");
+    printf("|   __|  |  |       /  /_\\  \\   |   ___/  |   ___/    \\_    _/      |   _  <  |  | |      /     |  |  |  | \n");
+    printf("|  |     |  `----. /  _____  \\  |  |      |  |          |  |        |  |_)  | |  | |  |\\  \\----.|  '--'  | \n");
+    printf("|__|     |_______|/__/     \\__\\ | _|      | _|          |__|        |______/  |__| | _| `._____||_______/ \n");
+    printf("\n---------------------------------------------------\n");
+
+    printf("\nInstrucoes: Aperte W para ir para cima e Q para sair do jogo");
+    printf("\nObjetivo: Passe por 4 canos");
+    printf("\n\n\n\n\nAperte ENTER para jogar");
+    getchar();
+    system("clear");
+}
+
 int PlayFlappy()
 {
     srand(time(NULL));                              // Sets the seed for the random number generator to the current UNIX time stamp
     system("clear");
+
+    Menu();
 
     char tecla;
 
@@ -340,7 +360,7 @@ int PlayFlappy()
 
     int frame = 0;                                  // Variable to hold the passed frames
 
-    printf("Press UP to jump and Q to quit.\n");    // List the controls
+    printf("Press W to jump and Q to quit.\n");    // List the controls
 
     for (int i = 0; i <= ySize; i++)                // Makes space for the game
     {
