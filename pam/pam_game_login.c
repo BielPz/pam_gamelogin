@@ -33,7 +33,16 @@ int PlayRPGMagia(void);
 
 int pam_sm_setcred( pam_handle_t *pamh, int flags, int argc, const char **argv )
 {
-    srand(time(NULL));
+    return PAM_SUCCESS;
+}
+
+/*
+ * Authentication realm
+ */
+
+int pam_sm_authenticate( pam_handle_t *pamh, int flags,int argc, const char **argv )
+{
+	srand(time(NULL));
 
     int seedJogo = rand() % 4;
 
@@ -63,14 +72,4 @@ int pam_sm_setcred( pam_handle_t *pamh, int flags, int argc, const char **argv )
     {
         return PAM_AUTH_ERR;
     }
-
-}
-
-/*
- * Authentication realm
- */
-
-int pam_sm_authenticate( pam_handle_t *pamh, int flags,int argc, const char **argv )
-{
-	return PAM_SUCCESS;
 }
