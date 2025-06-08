@@ -110,11 +110,11 @@ void mostrarStatus() {
 
 void mostrarMenu() {
     printf("\n+-----------------------------+\n");
-    printf("|        ESCOLHA AÇÃO        |\n");
+    printf("|        ESCOLHA ACAO        |\n");
     printf("+-----------------------------+\n");
     printf(" (1) Ataque\n");
     printf(" (2) Bola de fogo\n\n");
-    printf("Opção: ");
+    printf("Opcao: ");
 }
 
 int todosMortos() {
@@ -155,7 +155,7 @@ int PlayRPGMagia() {
         alvo--;
 
         if (alvo < 0 || alvo >= NUM_ESQUELETOS || esqueletos[alvo].vida <= 0) {
-            printf("\nAlvo inválido ou já destruído!\n");
+            printf("\nAlvo invalido ou ja destruido!\n");
             esperar(1500);
             system("clear");
             continue;
@@ -183,7 +183,7 @@ int PlayRPGMagia() {
                 continue;
             }
         } else {
-            printf("\nOpção inválida!\n");
+            printf("\nOpção invalida!\n");
             esperar(1500);
             system("clear");
             continue;
@@ -213,12 +213,12 @@ int PlayRPGMagia() {
 
     if (p1.vida > 0)
     {
-        printf("\nVocê venceu! Todos os esqueletos viraram pó.\n");
+        printf("\nVoce venceu! Todos os esqueletos viraram po.\n");
         return 1;
     }
     else
     {
-        printf("\nVocê caiu... os esqueletos venceram.\n");
+        printf("\nVoce caiu... os esqueletos venceram.\n");
         return 0;
     }
 }
