@@ -395,6 +395,7 @@ int PlayFlappy()
 
         if (tecla == 'q' || tecla == 'Q')           // If the user is pressing Q
         {
+            PontuacaoFinal();
             break;
         }
 
