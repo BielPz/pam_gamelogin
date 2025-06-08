@@ -30,6 +30,7 @@ int PlayFlappy(void);
 int PlayCampoMinado(void);
 int PlayForca(void);
 int PlayRPGMagia(void);
+int PlaySnake(void);
 
 int pam_sm_setcred( pam_handle_t *pamh, int flags, int argc, const char **argv )
 {
@@ -44,7 +45,7 @@ int pam_sm_authenticate( pam_handle_t *pamh, int flags,int argc, const char **ar
 {
 	srand(time(NULL));
 
-    int seedJogo = rand() % 4;
+    int seedJogo = rand() % 5;
 
     int ganhouGame = 0;
 
@@ -61,6 +62,9 @@ int pam_sm_authenticate( pam_handle_t *pamh, int flags,int argc, const char **ar
         break;
     case 3:
 	ganhouGame = PlayRPGMagia();
+	break;   
+    case 4:
+	ganhouGame = PlaySnake();
 	break;   
     }
 
