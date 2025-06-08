@@ -5,7 +5,7 @@
 #include <locale.h>
 #include <termios.h>
 #include <unistd.h>
-#include <ctype.h>  // Necessário para toupper()
+#include <ctype.h>  // NecessÃ¡rio para toupper()
 
 #define V 21
 #define H 75
@@ -39,7 +39,7 @@ void begin(int *size, char map[V][H]);
 void intro(char map[V][H]);
 void intro_data(char map[V][H], int *size);
 void loop(char map[V][H], int size);
-void input(char map[V][H], int *size, int *dead);
+void input_Snake(char map[V][H], int *size, int *dead);
 void update(char map[V][H], int size);
 void intro_data2(char map[V][H], int size);
 void victory();
@@ -144,29 +144,7 @@ void intro_data(char map[V][H], int *size)
 	map[frt.y][frt.x] = 'X'; // fruit
 }
 
-void loop(char map[V][H], int size)
-{
-	int dead;
-	dead = 0;
-
-	do
-	{
-		gotoxy(0, 0);
-		show(map);
-		input(map, &size, &dead);
-		update(map, size); // automatic
-
-		usleep(100000); // Replaced Sleep(10) with usleep(100000) for 100ms on Linux (10ms was too fast)
-
-		if(eaten >= 2){
-            victory(); //The user won the game
-            dead = 1;
-		}
-
-	} while (dead == 0);
-}
-
-void input(char map[V][H], int *size, int *dead)
+void input_Snake(char map[V][H], int *size, int *dead)
 {
 	int i;
 	char key;
@@ -213,34 +191,56 @@ void input(char map[V][H], int *size, int *dead)
 			key = getch_linux(); // Use custom getch_linux
 
             // Aplica toupper() para que as teclas 'w', 'a', 's', 'd' funcionem
-            // tanto em maiúsculas quanto em minúsculas
+            // tanto em maiÃºsculas quanto em minÃºsculas
             key = toupper(key);
 
-			if (key == 'S' && snk[0].movY != -1) // Agora comparamos com 'S' maiúsculo
+			if (key == 'S' && snk[0].movY != -1) // Agora comparamos com 'S' maiÃºsculo
 			{
 				snk[0].movX = 0;
 				snk[0].movY = 1;
 			}
 
-			if (key == 'W' && snk[0].movY != 1) // Agora comparamos com 'W' maiúsculo
+			if (key == 'W' && snk[0].movY != 1) // Agora comparamos com 'W' maiÃºsculo
 			{
 				snk[0].movX = 0;
 				snk[0].movY = -1;
 			}
 
-			if (key == 'A' && snk[0].movX != 1) // Agora comparamos com 'A' maiúsculo
+			if (key == 'A' && snk[0].movX != 1) // Agora comparamos com 'A' maiÃºsculo
 			{
 				snk[0].movX = -1;
 				snk[0].movY = 0;
 			}
 
-			if (key == 'D' && snk[0].movX != -1) // Agora comparamos com 'D' maiúsculo
+			if (key == 'D' && snk[0].movX != -1) // Agora comparamos com 'D' maiÃºsculo
 			{
 				snk[0].movX = 1;
 				snk[0].movY = 0;
 			}
 		}
 	}
+}
+
+void loop(char map[V][H], int size)
+{
+	int dead;
+	dead = 0;
+
+	do
+	{
+		gotoxy(0, 0);
+		show(map);
+		input_Snake(map, &size, &dead);
+		update(map, size); // automatic
+
+		usleep(100000); // Replaced Sleep(10) with usleep(100000) for 100ms on Linux (10ms was too fast)
+
+		if(eaten >= 2){
+            victory(); //The user won the game
+            dead = 1;
+		}
+
+	} while (dead == 0);
 }
 
 void update(char map[V][H], int size)
@@ -280,10 +280,10 @@ void intro_data2(char map[V][H], int size)
 void victory()
 {
     vic = 1;
-    gotoxy(0, 0); // Move o cursor para o início
+    gotoxy(0, 0); // Move o cursor para o inÃ­cio
     system("clear"); // Replaced "cls" with "clear" for Linux
-    printf("\n\n\n  PARABENS! VOCÊ VENCEU!\n");
-    printf("  Você comeu %d frutas! O jogo terminou.\n", eaten);
+    printf("\n\n\n  PARABENS! VOCÃŠ VENCEU!\n");
+    printf("  VocÃª comeu %d frutas! O jogo terminou.\n", eaten);
 }
 
 // Linux equivalent for gotoxy
@@ -350,7 +350,7 @@ int PlaySnake()
                 {
                     printf("\n\n  Jogar novamente? [s/n] ");
                     scanf(" %c", &ans);
-                    ans = toupper(ans); // Converte para maiúscula para a comparação abaixo
+                    ans = toupper(ans); // Converte para maiÃºscula para a comparaÃ§Ã£o abaixo
                 }
                 while(ans != 'S' && ans != 'N');
             }
@@ -365,7 +365,7 @@ int PlaySnake()
             return 1;
         }
 
-    }while(ans == 'S' && vezes_jogadas <= 3); // Compara com 'S' maiúsculo
+    }while(ans == 'S' && vezes_jogadas <= 3); // Compara com 'S' maiÃºsculo
 
     return 0;
 }
