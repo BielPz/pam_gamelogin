@@ -234,6 +234,7 @@ void exibir()
 int PlayCampoMinado()
 {
     colocar_bombas();
+    int validar = 0;
     int op = 0;
 
     do
@@ -247,19 +248,29 @@ int PlayCampoMinado()
         printf("Opcao: ");
         scanf("%i", &op);
 
-        switch(op)
+        while (getchar() != '\n');
+        
+        if(validar == 1)
         {
-            case 1:
-                jogar();
-                break;
-            case 2:
-                colocar_bandeira();
-                break;
-
-            case 3:
-                break;
-            default:
-                strcpy(mensagem, "OPCAO INVALIDA");
+            switch(op)
+            {
+                case 1:
+                    jogar();
+                    break;
+                case 2:
+                    colocar_bandeira();
+                    break;
+    
+                case 3:
+                    break;
+                default:
+                    strcpy(mensagem, "OPCAO INVALIDA");
+            }
+        }
+        else
+        {
+            strcpy(mensagem, "OPCAO INVALIDA");
+            op = 0;
         }
 
     }
