@@ -362,10 +362,12 @@ int PlaySnake()
         }
         else
         {
+	    reset_terminal_settings();
             return 1;
         }
 
     }while(ans == 'S' && vezes_jogadas <= 3); // Compara com 'S' maiúsculo
-
+	
+    reset_terminal_settings();
     return 0;
 }
