@@ -130,6 +130,7 @@ int PlayRPGMagia() {
     setlocale(LC_ALL, "Portuguese");
     int opcao, alvo;
     srand(time(NULL));
+    system(CLEAR);
 
     p1.vida = 1000;
     p1.poder = 50;
