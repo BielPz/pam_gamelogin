@@ -4,7 +4,7 @@
 #include <string.h>
 
 #define BOMBA 208
-#define QTD_BOMBA 30
+#define QTD_BOMBA 25
 #define META 14
 
 unsigned char mapa[7][7] = {
