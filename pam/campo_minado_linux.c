@@ -246,7 +246,7 @@ int PlayCampoMinado()
         printf("SAIR             [3]\n");
 
         printf("Opcao: ");
-        validar = scanf("%i", &op);
+        validar = scanf("%i", &op);
 
         while (getchar() != '\n');
         
