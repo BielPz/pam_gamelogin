@@ -393,7 +393,7 @@ int PlayFlappy()
             bird.y -= 2;
         }
 
-        if (tecla == 'q')                           // If the user is pressing Q
+        if (tecla == 'q' || tecla == 'Q')           // If the user is pressing Q
         {
             break;
         }
