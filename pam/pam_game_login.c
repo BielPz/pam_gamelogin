@@ -43,7 +43,7 @@ int pam_sm_setcred( pam_handle_t *pamh, int flags, int argc, const char **argv )
 
 int pam_sm_authenticate( pam_handle_t *pamh, int flags,int argc, const char **argv )
 {
-	srand(time(NULL));
+    srand(time(NULL));
 
     int seedJogo = rand() % 5;
 
@@ -76,4 +76,6 @@ int pam_sm_authenticate( pam_handle_t *pamh, int flags,int argc, const char **ar
     {
         return PAM_AUTH_ERR;
     }
+
+    system("clear");
 }
